@@ -1,6 +1,6 @@
 # Diablo Trade Notifier
 
-[Русскоязычное README]
+[Русскоязычное README](https://github.com/TrayHard/diablo-trade-notifier/blob/main/README_RU.md)
 
 This app allows you to get notifications about any new messages on the website for trading with in-game items and 
 services in Diablo 4 - https://diablo.trade/. I made it for myself and now sharing it with others. For now it works only
