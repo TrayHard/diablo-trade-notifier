@@ -1,6 +1,6 @@
 # Diablo Trade Notifier
 
-[English README]
+[English README](https://github.com/TrayHard/diablo-trade-notifier/blob/main/README.md)
 
 Это приложение позволяет получать уведомления о новых сообщениях на сайте для торговли внутриигровыми предметами и 
 услугами в Diablo 4 - https://diablo.trade/. Я создал его для себя и теперь делюсь с другими. На данный момент оно 
