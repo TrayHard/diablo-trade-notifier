@@ -53,11 +53,10 @@ def get_line_from_file(file_path, line_number=1):
             for current_line_number, line in enumerate(file, start=1):
                 if current_line_number == line_number:
                     return line.strip()
-        print(f"Line {line_number} not found in file {file_path}.")
-        return None
+        raise ValueError()
     except FileNotFoundError:
         print(f"File {file_path} not found.")
-        return None
+        raise ValueError()
 
 async def connect():
     ws_uri="wss://sockets.diablo.trade/connection/websocket"
@@ -106,14 +105,17 @@ def process_token_file(file_path=TOKENS_FILE_PATH):
         with open(file_path, 'w') as file:
             pass
         print(f"Tokens file created at {file_path}.")
-        raise ValueError("Please add required lines to {TOKENS_FILE_PATH}. Check README.md if you don't know how.")
+        raise ValueError("Please add required lines to ./tokens.txt. Check README.md if you don't know how.")
     else:
         print(f"Tokens file already exists at {file_path}")
         global connect_string
         global subscribe_string
-        connect_string=get_line_from_file(TOKENS_FILE_PATH, 1)
-        subscribe_string=get_line_from_file(TOKENS_FILE_PATH, 2)
-        return True
+        try:
+            connect_string=get_line_from_file(TOKENS_FILE_PATH, 1)
+            subscribe_string=get_line_from_file(TOKENS_FILE_PATH, 2)
+            return True
+        except:
+            raise ValueError("Please add required lines to ./tokens.txt. Check README.md if you don't know how.")
 
 def start():
     process_token_file(TOKENS_FILE_PATH)
