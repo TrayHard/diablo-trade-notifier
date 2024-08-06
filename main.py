@@ -37,7 +37,7 @@ def send_telegram_message(message):
 
 def notify_dm(sender, message_content, platform=PLATFORM):
     if (platform == 'telegram'):
-        send_telegram_message(f"*Diablo Trade*\n\n*{sender}:*\n**{message_content}**")
+        send_telegram_message(f"*Diablo Trade*\n\n*{sender}:*\n**{message_content}**\n\n🔗__https://diablo.trade/chat__")
 #     if (platform == 'discord')
 #         send_discord_message(message_content)
 
