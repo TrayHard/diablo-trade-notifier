@@ -19,6 +19,7 @@ SESSION_FILE_PATH='./session_id.txt'
 
 connect_string=""
 subscribe_string=""
+session_id=""
 
 def get_timestamp():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -73,9 +74,13 @@ async def connect():
                 response = json.loads(await websocket.recv())
                 print(f"[{get_timestamp()}]: Recieved: {response}")
                 if 'error' in response:
-                    notify_status(f'*Diablo Trade*\n\n🚫 Error: { response["error"]["message"] }', PLATFORM)
-                    print(response["error"])
-                    return
+                    if response["error"]["message"] == 'token expired':
+                        update_tokens(session_id)
+                        continue
+                    else:
+                        notify_status(f'*Diablo Trade*\n\n🚫 Error: { response["error"]["message"] }', PLATFORM)
+                        print(response["error"])
+                        return
 
                 await websocket.send(subscribe_string)
                 print(f"[{get_timestamp()}]: Subscribing...")
@@ -146,8 +151,13 @@ def form_strings(auth_token, subscription_token, user_id):
     connect_string=f'{{"connect":{{"token":"{auth_token}","name":"js"}},"id":1}}'
     subscribe_string=f'{{"subscribe":{{"channel":"personal:{user_id}","token":"{subscription_token}"}},"id":2}}'
 
+def update_tokens(session_id):
+    form_strings(*get_tokens(session_id))
+
 def start():
-    form_strings(*get_tokens(process_session_file(SESSION_FILE_PATH)))
+    global session_id
+    session_id = process_session_file(SESSION_FILE_PATH)
+    update_tokens(session_id)
     asyncio.run(connect())
 
 if __name__ == "__main__":
