@@ -4,6 +4,8 @@ import requests
 import json
 import sys
 import os.path
+import warnings
+warnings.filterwarnings("ignore", message="`secure` changed to True for `__Secure-` prefixed cookies")
 
 from curl_cffi import requests as r
 from datetime import datetime
