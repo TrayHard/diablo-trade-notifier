@@ -94,7 +94,7 @@ async def connect():
                             message_content = data["push"]["pub"]["data"]["body"]["payload"]["message"]["content"]
                             sender = data["push"]["pub"]["data"]["body"]["payload"]["message"]["sender"]
 
-                            notify_dm(sender, message_content, telegram)
+                            notify_dm(sender, message_content, 'telegram')
                         except (KeyError, json.JSONDecodeError) as e:
                             print(f"[{get_timestamp()}]: Failed to parse response: {e}")
         except websockets.exceptions.ConnectionClosed as e:
