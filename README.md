@@ -20,7 +20,7 @@ and [Pull Requests](https://github.com/TrayHard/diablo-trade-notifier/pulls) are
 ### Usage:
 - Install [Python 3](https://www.python.org/downloads/). 
 - Clone the repo
-- Install requirements: `pip install asyncio websockets requests python-dotenv`
+- Install requirements: `pip install asyncio websockets requests python-dotenv curl_cffi`
 - Create `.env` file and fill it up relying on `.env.example`
 - Create "session_id.txt" file in the folder or just launch the app once, it will be created automatically.
 - You need to grab your session id from browser and put it in "session_id.txt", to do that follow instructions in "**Authorizing**" section

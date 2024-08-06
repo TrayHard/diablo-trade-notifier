@@ -22,7 +22,7 @@ _Небольшой дисклеймер: я не очень хорошо зна
 ### Usage:
 - Установите [Python 3](https://www.python.org/downloads/).
 - Склонируйте репозиторий
-- Установите зависимости: `pip install asyncio websockets requests python-dotenv`
+- Установите зависимости: `pip install asyncio websockets requests python-dotenv curl_cffi`
 - Создайте файл `.env` и заполните его, опираясь на `.env.example`
 - Создайте файл "session_id.txt" в папке, или просто запустите приложение один раз, файл будет создан автоматически.
 - Вам нужно получить свой session id из браузера и поместить его в "session_id.txt". Для этого следуйте инструкциям в разделе "**Авторизация**".
