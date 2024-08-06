@@ -35,9 +35,13 @@ def send_telegram_message(message):
 # def send_discord_message(message):
 #     print(message)
 
+def escape_markdown(text):
+    return text.replace('_', '\_').replace('*', '\*').replace('[', '\[').replace(']', '\]').replace('`', '\`')
+
 def notify_dm(sender, message_content, platform=PLATFORM):
     if (platform == 'telegram'):
-        send_telegram_message(f"*Diablo Trade*\n\n*{sender}:*\n**{message_content}**\n\n🔗__https://diablo.trade/chat__")
+        processed_message = escape_markdown(message_content)
+        send_telegram_message(f"*Diablo Trade*\n\n*{sender}:*\n**{processed_message}**\n\n🔗__https://diablo.trade/chat__")
 #     if (platform == 'discord')
 #         send_discord_message(message_content)
 
