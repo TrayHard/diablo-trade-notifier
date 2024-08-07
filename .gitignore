@@ -7,3 +7,7 @@ __pycache__
 .vscode
 *.session*
 /myenv
+*.spec
+
+dist/
+build/
