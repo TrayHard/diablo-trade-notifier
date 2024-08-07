@@ -36,7 +36,7 @@ def send_telegram_message(message):
 #     print(message)
 
 def escape_markdown(text):
-    return text.replace('_', '\_').replace('*', '\*').replace('[', '\[').replace(']', '\]').replace('`', '\`')
+    return text.replace('_', r'\_').replace('*', r'\*').replace('[', r'\[').replace(']', r'\]').replace('`', r'\`')
 
 def notify_dm(sender, message_content, platform=PLATFORM):
     if (platform == 'telegram'):
