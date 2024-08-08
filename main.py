@@ -140,6 +140,11 @@ def get_tokens(session_id):
     }
 
     response = r.get("https://diablo.trade/api/auth/session", impersonate="chrome", cookies=cookies, headers=headers)
+
+    if 'user' not in response.json():
+        notify_status(f'*Diablo Trade*\n\n🚫 Error: session id expired', PLATFORM)
+        raise ValueError('Session id expired')
+
     user_id = response.json()['user']['id']
     response = r.get(f'https://diablo.trade/api/trpc/realtime.auth?batch=1&input=%7B%220%22%3A%7B%22json%22%3Anull%2C%22meta%22%3A%7B%22values%22%3A%5B%22undefined%22%5D%7D%7D%7D', impersonate="chrome", headers=headers, cookies=response.cookies)
     auth_token = response.json()[0]['result']['data']['json']['token']
