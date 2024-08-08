@@ -110,7 +110,7 @@ async def connect():
                         except (KeyError, json.JSONDecodeError) as e:
                             print(f"[{get_timestamp()}]: Failed to parse response: {e}")
         except websockets.exceptions.ConnectionClosed as e:
-            print(f"[{get_timestamp()}] - WS connection closed: {e}")
+            print(f"\n[{get_timestamp()}] - WS connection closed: {e}")
 
 def process_session_file(file_path=SESSION_FILE_PATH):
     if not os.path.exists(file_path):
