@@ -1,5 +1,5 @@
 .env
-*.txt
+session_id.txt
 __pycache__
 .venv
 .idea
