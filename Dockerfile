@@ -10,6 +10,7 @@ ARG PYTHON_VERSION=3.12.3
 FROM python:${PYTHON_VERSION}-slim AS base
 LABEL org.opencontainers.image.authors="Ilia Poliakov <trayhardplay@gmail.com>"
 LABEL version="1.0.0"
+LABEL docker_file_version="1.1"
 
 # Prevents Python from writing pyc files.
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -29,11 +30,7 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 
-WORKDIR /home/diablo-trade-notifier/
-COPY main.py /home/diablo-trade-notifier/main.py
-COPY .env /home/diablo-trade-notifier/.env
-COPY requirements.txt /home/diablo-trade-notifier/requirements.txt
-COPY session_id.txt /home/diablo-trade-notifier/session_id.txt
+COPY . /home/diablo-trade-notifier
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
