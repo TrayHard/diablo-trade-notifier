@@ -1,0 +1,7 @@
+asyncio==3.4.3
+cffi==1.16.0
+curl_cffi==0.7.1
+python-dotenv==1.0.1
+requests==2.32.3
+urllib3==2.2.2
+websockets==12.0
